@@ -15,6 +15,9 @@ export class Tower extends Component {
       <div style={{...styles.container, ...this.props.style}}>
         <div style={{...styles.towerCap, ...towerCapColorStyles[this.props.color]}} />
         <div style={{...styles.tower, height: this.props.height}} />
+        <div style={styles.heightWrapper}>
+          <div style={styles.height}>{this.props.height}</div>
+        </div>
       </div>
     );
   }
@@ -37,6 +40,23 @@ const styles = {
     width: 68,
     height: 94,
   },
+  heightWrapper: {
+    width: 43,
+    height: 18,
+    border: '2px solid #000',
+    padding: 1,
+    margin: '-13px auto 0 auto',
+    opacity: 0.8,
+  },
+  height: {
+    font: '11px Arial',
+    textAlign: 'center',
+    height: 18,
+    backgroundColor: '#000',
+    color: '#b1b195',
+    lineHeight: '18px',
+    verticalAlign: 'middle',
+  }
 };
 
 const towerCapColorStyles = {
