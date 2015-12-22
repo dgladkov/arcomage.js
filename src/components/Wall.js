@@ -11,7 +11,7 @@ export class Wall extends Component {
 
   render() {
     return (
-      <div style={{...styles.wall, height: this.props.height}} />
+      <div style={{...styles.wall, height: this.props.height, ...this.props.style}} />
     );
   }
 

@@ -21,7 +21,7 @@ export class Card extends Component {
     const { image } = this.props;
     const backgroundPosition = `-${ image.column * 88 }px -${ image.row * 52 }px`;
     return (
-      <div style={{...styles.card, ...cardColorStyles[this.props.color]}}>
+      <div style={{...styles.card, ...cardColorStyles[this.props.color], ...this.props.style}}>
         <div style={styles.cardName}>{this.props.name}</div>
         <div style={{...styles.cardImage, backgroundPosition}}/>
         <div style={styles.cardDescription}>
@@ -43,6 +43,7 @@ const disableTextSelection = {
   MozUserSelect: 'none',
   WebkitTouchCallout: 'none',
   WebkitUserSelect: 'none',
+  cursor: 'default',
 };
 
 const styles = {

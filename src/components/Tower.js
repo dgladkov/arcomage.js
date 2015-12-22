@@ -12,7 +12,7 @@ export class Tower extends Component {
 
   render() {
     return (
-      <div style={styles.container}>
+      <div style={{...styles.container, ...this.props.style}}>
         <div style={{...styles.towerCap, ...towerCapColorStyles[this.props.color]}} />
         <div style={{...styles.tower, height: this.props.height}} />
       </div>
@@ -23,9 +23,6 @@ export class Tower extends Component {
 
 const styles = {
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
     width: 68,
   },
   tower: {
@@ -33,6 +30,7 @@ const styles = {
     width: 45,
     height: 0,
     backgroundPosition: '-72px -2px',
+    margin: '0 auto',
   },
   towerCap: {
     backgroundImage: `url("${sprites}")`,
