@@ -15,7 +15,7 @@ export class CardViewer extends Component {
   }
 
   state = {
-    hidden: false,
+    hidden: true,
   }
 
   render() {
@@ -39,6 +39,7 @@ export class CardViewer extends Component {
             key={card.name}
             name={card.name}
             onClick={() => card.actions.forEach(this.props.dispatch)}
+            onContextMenu={() => {}}
             style={styles.card}
           />
         ))}

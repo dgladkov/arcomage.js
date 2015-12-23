@@ -46,3 +46,35 @@ export function endTurn() {
     type: types.END_TURN,
   };
 }
+
+export function discardOpponentCard(index) {
+  return {
+    type: types.DISCARD_CARD,
+    actor: 'opponent',
+    index,
+  };
+}
+
+export function discardPlayerCard(index) {
+  return {
+    type: types.DISCARD_CARD,
+    actor: 'player',
+    index,
+  };
+}
+
+export function drawOpponentCard(index) {
+  return {
+    type: types.DRAW_CARD,
+    actor: 'opponent',
+    index,
+  };
+}
+
+export function drawPlayerCard(index) {
+  return {
+    type: types.DRAW_CARD,
+    actor: 'player',
+    index,
+  };
+}

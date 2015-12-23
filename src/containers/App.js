@@ -9,6 +9,8 @@ import { CardViewer } from '../components/CardViewer';
 import { Resources } from '../components/Resources';
 import { PlayerName } from '../components/PlayerName';
 
+import { discardPlayerCard, endTurn } from '../actions';
+
 import background from 'file!../images/background.png';
 
 const resourceTypeToColorMap = {
@@ -24,9 +26,9 @@ class App extends Component {
     game: React.PropTypes.object.isRequired,
   }
 
-  constructor(props) {
-    super(props);
-    this.dispatchActions = this.dispatchActions.bind(this);
+  discardCard(index) {
+    this.props.dispatch(discardPlayerCard(index));
+    this.props.dispatch(endTurn());
   }
 
   dispatchActions(actions) {
@@ -82,15 +84,21 @@ class App extends Component {
           style={styles.rightResources}
         /> <CardViewer dispatch={this.props.dispatch} />
         <div style={styles.hand}>
-          {player.hand.map((card) => (
+          {player.hand.map((card, index) => (
             <Card
               color={resourceTypeToColorMap[card.resourceType]}
               cost={card.cost}
               description={card.description}
               image={card.image}
-              key={card.name}
+              key={index}
               name={card.name}
               onClick={() => this.dispatchActions(card.actions)}
+              onContextMenu={(e) => {
+                e.preventDefault();
+                if (card.canBeDiscarded) {
+                  return this.discardCard(index);
+                }
+              }}
             />
           ))}
         </div>

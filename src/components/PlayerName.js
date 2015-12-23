@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import sprites from 'file!../images/sprites.png';
-
 export class PlayerName extends Component {
 
   static propTypes = {

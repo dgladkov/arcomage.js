@@ -14,7 +14,7 @@ export class Tower extends Component {
     return (
       <div style={{...styles.container, ...this.props.style}}>
         <div style={{...styles.towerCap, ...towerCapColorStyles[this.props.color]}} />
-        <div style={{...styles.tower, height: this.props.height}} />
+        <div style={{...styles.tower, height: this.props.height * 1.5}} />
         <div style={styles.heightWrapper}>
           <div style={styles.height}>{this.props.height}</div>
         </div>

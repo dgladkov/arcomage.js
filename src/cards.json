@@ -2,6 +2,7 @@
     {
         "name": "Brick Shortage",
         "description": "All players lose 8 bricks",
+        "canBeDiscarded": true,
         "cost": 0,
         "resourceType": 0,
         "image": {
@@ -27,6 +28,7 @@
     {
         "name": "Lucky Cache",
         "description": "+2 Bricks\n+2 Gems\nPlay again",
+        "canBeDiscarded": true,
         "cost": 0,
         "resourceType": 0,
         "image": {
@@ -49,6 +51,7 @@
     {
         "name": "Friendly Terrain",
         "description": "+1 Wall\nPlay again",
+        "canBeDiscarded": true,
         "cost": 1,
         "resourceType": 0,
         "image": {
@@ -66,919 +69,2030 @@
     {
         "name": "Miners",
         "description": "+1 Quarry",
+        "canBeDiscarded": true,
         "cost": 3,
         "resourceType": 0,
         "image": {
             "column": 0,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_BRICK_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Mother Lode",
         "description": "If quarry<enemy quarry, +2 quarry. Else, +1 quarry",
+        "canBeDiscarded": true,
         "cost": 4,
         "resourceType": 0,
         "image": {
             "column": 0,
             "row": 4
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_BRICK_PRODUCTION_IF_LESS",
+                "actor": "player",
+                "valueTrue": 2,
+                "valueFalse": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Dwarven Miners",
         "description": "+4 Wall\n+1 Quarry",
+        "canBeDiscarded": true,
         "cost": 7,
         "resourceType": 0,
         "image": {
             "column": 0,
             "row": 5
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 4
+            },
+            {
+                "type": "CHANGE_BRICK_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Work Overtime",
         "description": "+5 Wall\nYou lose 6 gems",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 0,
         "image": {
             "column": 0,
             "row": 6
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 5
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "player",
+                "value": -6
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Copping the Tech",
         "description": "If quarry<enemy quarry, quarry=\nenemy quarry",
+        "canBeDiscarded": true,
         "cost": 5,
         "resourceType": 0,
         "image": {
             "column": 0,
             "row": 7
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "COPY_BRICK_PRODUCTION_IF_LESS",
+                "actor": "player"
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Basic Wall",
         "description": "+3 Wall",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 0,
         "image": {
             "column": 0,
             "row": 8
         },
-        "actions": "addPlayerWall:3"
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Sturdy Wall",
         "description": "+4 Wall",
+        "canBeDiscarded": true,
         "cost": 3,
         "resourceType": 0,
         "image": {
             "column": 0,
             "row": 9
         },
-        "actions": "addPlayerWall:4"
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 4
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Innovations",
         "description": "+1 To all player's quarries, you gain\n4 gems",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_BRICK_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_BRICK_PRODUCTION",
+                "actor": "opponent",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "player",
+                "value": 4
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Foundations",
         "description": "If wall =0, +6\nwall, else\n+3 wall",
+        "canBeDiscarded": true,
         "cost": 3,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL_IF_NO_WALL",
+                "actor": "player",
+                "valueTrue": 6,
+                "valueFalse": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Tremors",
         "description": "All walls take 5 damage.\nPlay again",
+        "canBeDiscarded": true,
         "cost": 7,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": -5
+            },
+            {
+                "type": "CHANGE_WALL",
+                "actor": "opponent",
+                "value": -5
+            }
+        ]
     },
     {
         "name": "Secret Room",
         "description": "+1 Magic\nPlay again",
+        "canBeDiscarded": true,
         "cost": 8,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_GEM_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            }
+        ]
     },
     {
         "name": "Earthquake",
         "description": "-1 To all player's quarries",
+        "canBeDiscarded": true,
         "cost": 0,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 4
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_BRICK_PRODUCTION",
+                "actor": "player",
+                "value": -1
+            },
+            {
+                "type": "CHANGE_BRICK_PRODUCTION",
+                "actor": "opponent",
+                "value": -1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Big Wall",
         "description": "+6 Wall",
+        "canBeDiscarded": true,
         "cost": 5,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 5
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 6
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Collapse!",
         "description": "-1 Enemy quarry",
+        "canBeDiscarded": true,
         "cost": 4,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 6
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_BRICK_PRODUCTION",
+                "actor": "opponent",
+                "value": -1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "New Equipment",
         "description": "+2 Quarry",
+        "canBeDiscarded": true,
         "cost": 6,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 7
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_BRICK_PRODUCTION",
+                "actor": "player",
+                "value": 2
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Strip Mine",
-        "description": "+1 Quarry, +10\nwall. You gain 5 gems",
+        "description": "-1 Quarry, +10\nwall. You gain 5 gems",
+        "canBeDiscarded": true,
         "cost": 0,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 8
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_BRICK_PRODUCTION",
+                "actor": "player",
+                "value": -1
+            },
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 10
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "player",
+                "value": 5
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Reinforced Wall",
         "description": "+8 Wall",
+        "canBeDiscarded": true,
         "cost": 8,
         "resourceType": 0,
         "image": {
             "column": 1,
             "row": 9
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 8
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Portcullis",
         "description": "+5 Wall\n+1 Dungeon",
+        "canBeDiscarded": true,
         "cost": 9,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 5
+            },
+            {
+                "type": "CHANGE_RECRUIT_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Crystal Rocks",
         "description": "+7 Wall\ngain 7 gems",
+        "canBeDiscarded": true,
         "cost": 9,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 7
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "player",
+                "value": 7
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Harmonic Ore",
         "description": "+6 Wall\n+3 Tower",
+        "canBeDiscarded": true,
         "cost": 11,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 6
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "MondoWall",
         "description": "+12 Wall",
+        "canBeDiscarded": true,
         "cost": 13,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 12
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Focused Designs",
         "description": "+8 Wall\n+5 Tower",
+        "canBeDiscarded": true,
         "cost": 15,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 4
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 8
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 5
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Great Wall",
         "description": "+15 Wall",
+        "canBeDiscarded": true,
         "cost": 16,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 5
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 15
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Rock Launcher",
         "description": "+6 Wall\n10 Damage\n to enemy",
+        "canBeDiscarded": true,
         "cost": 18,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 6
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 6
+            },
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 10
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Dragon's Heart",
         "description": "+20 Wall\n+8 Tower",
+        "canBeDiscarded": true,
         "cost": 24,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 7
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 20
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 8
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Forced Labor",
         "description": "+9 Wall\nLose 5 recruits",
+        "canBeDiscarded": true,
         "cost": 7,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 8
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 9
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "player",
+                "value": -5
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Rock Garden",
         "description": "+1 Wall\n+1 Tower\n+2 recruits",
+        "canBeDiscarded": true,
         "cost": 1,
         "resourceType": 0,
         "image": {
             "column": 2,
             "row": 9
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "player",
+                "value": 2
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Flood Water",
         "description": "Player(s) with lowest Wall get -1 Dungeon and 2 dam. to Tower",
+        "canBeDiscarded": true,
         "cost": 6,
         "resourceType": 0,
         "image": {
             "column": 3,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "FLOOD_WATER"
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Barracks",
-        "description": "+6 rec., +6 Wall\nif < dungeon, +1 dungeon",
+        "description": "+6 recruits\n+6 Wall\nif < dungeon,\n+1 dungeon",
+        "canBeDiscarded": true,
         "cost": 10,
         "resourceType": 0,
         "image": {
             "column": 3,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "player",
+                "value": 6
+            },
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 6
+            },
+            {
+                "type": "CHANGE_RECRUIT_PRODUCTION_IF_LESS",
+                "actor": "player",
+                "valueTrue": 1,
+                "valueFalse": 0
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Battlements",
         "description": "+7 Wall\n6 damage to enemy",
+        "canBeDiscarded": true,
         "cost": 14,
         "resourceType": 0,
         "image": {
             "column": 3,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 7
+            },
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 6
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Shift",
         "description": "Switch your wall with enemy Wall",
+        "canBeDiscarded": true,
         "cost": 17,
         "resourceType": 0,
         "image": {
             "column": 3,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "SWITCH_WALL"
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Quartz",
         "description": "+1 Tower\nPlay again",
+        "canBeDiscarded": true,
         "cost": 1,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 1
+            }
+        ]
     },
     {
         "name": "Smoky Quartz",
         "description": "1 Damange to enemy tower\nPlay again",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -1
+            }
+        ]
     },
     {
         "name": "Amethyst",
         "description": "+3 Tower",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Spell Weavers",
         "description": "+1 Magic",
+        "canBeDiscarded": true,
         "cost": 3,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_GEM_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Prism",
         "description": "Draw 1 card\nDiscard 1 card\nPlay again",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 4
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "DRAW_CARD",
+                "actor": "player"
+            }
+        ]
     },
     {
         "name": "Lodestone",
         "description": "+3 Tower. This card can't be discarded",
+        "canBeDiscarded": false,
         "cost": 5,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 5
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Solar Flare",
         "description": "+2 Tower\n 2 Damage to enemy tower",
+        "canBeDiscarded": true,
         "cost": 4,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 6
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 2
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -2
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Crystal Matrix",
-        "description": "+1 Magic\n+3 Tower\n+1 en. Tower",
+        "description": "+1 Magic\n+3 Tower\n+1 enemy\nTower",
+        "canBeDiscarded": true,
         "cost": 6,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 7
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_GEM_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Gemstone Flaw",
         "description": "3 Damage to enemy tower",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 8
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Ruby",
         "description": "+5 Tower",
+        "canBeDiscarded": true,
         "cost": 3,
         "resourceType": 1,
         "image": {
             "column": 4,
             "row": 9
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 5
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Gem Spear",
         "description": "5 Damage\nto enemy tower",
+        "canBeDiscarded": true,
         "cost": 4,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -5
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Power Burn",
         "description": "5 Damage\nto your tower\n+2 Magic",
+        "canBeDiscarded": true,
         "cost": 3,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": -5
+            },
+            {
+                "type": "CHANGE_GEM_PRODUCTION",
+                "actor": "player",
+                "value": 2
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Harmonic Vibe",
         "description": "+1 Magic\n+3 Tower\n+3 Wall",
+        "canBeDiscarded": true,
         "cost": 7,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_GEM_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
-        "name": "Partiy",
-        "description": "All player's magic equals the highest magic",
+        "name": "Parity",
+        "description": "All player's magic equals the highest player's magic",
+        "canBeDiscarded": true,
         "cost": 7,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "EQUALIZE_GEM_PRODUCTION"
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Emerald",
         "description": "+8 Tower",
+        "canBeDiscarded": true,
         "cost": 6,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 4
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 8
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Pearl of Wisdom",
         "description": "+5 Tower\n+1 Magic",
+        "canBeDiscarded": true,
         "cost": 9,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 5
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 5
+            },
+            {
+                "type": "CHANGE_GEM_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Shatterer",
         "description": "-1 Magic\n9 Damage to enemy tower",
+        "canBeDiscarded": true,
         "cost": 8,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 6
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_GEM_PRODUCTION",
+                "actor": "player",
+                "value": -1
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -9
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Crumblestone",
         "description": "+5 Tower\nEnemy loses 6 bricks",
+        "canBeDiscarded": true,
         "cost": 7,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 7
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 5
+            },
+            {
+                "type": "CHANGE_BRICKS",
+                "actor": "opponent",
+                "value": -6
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Sapphire",
         "description": "+11 Tower",
+        "canBeDiscarded": true,
         "cost": 10,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 8
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 11
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Discord",
         "description": "7 Damage to all towers, all player magic -1",
+        "canBeDiscarded": true,
         "cost": 5,
         "resourceType": 1,
         "image": {
             "column": 5,
             "row": 9
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": -7
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -7
+            },
+            {
+                "type": "CHANGE_GEM_PRODUCTION",
+                "actor": "player",
+                "value": -1
+            },
+            {
+                "type": "CHANGE_GEM_PRODUCTION",
+                "actor": "opponent",
+                "value": -1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Fire Ruby",
         "description": "+6 Tower\n4 Damage to enemy tower",
+        "canBeDiscarded": true,
         "cost": 13,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 6
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -4
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Quarry's Help",
         "description": "+7 Tower\nLose 10\nbricks",
+        "canBeDiscarded": true,
         "cost": 4,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 7
+            },
+            {
+                "type": "CHANGE_BRICKS",
+                "actor": "player",
+                "value": -10
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Crystal Shield",
         "description": "+8 Tower\n+3 Wall",
+        "canBeDiscarded": true,
         "cost": 12,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 8
+            },
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Empathy Gem",
         "description": "+8 Tower\n+1 Dungeon",
+        "canBeDiscarded": true,
         "cost": 14,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 8
+            },
+            {
+                "type": "CHANGE_RECRUIT_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Diamond",
         "description": "+15 Tower",
+        "canBeDiscarded": true,
         "cost": 16,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 4
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 15
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Sanctuary",
         "description": "+10 Tower\n+5 Wall\n+5 recruits",
+        "canBeDiscarded": true,
         "cost": 15,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 5
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 10
+            },
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 5
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "player",
+                "value": 5
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Lava Jewel",
-        "description": "+12 Tower\n6 Damage to all enemies",
+        "description": "+12 Tower\n6 Damage to enemy",
+        "canBeDiscarded": true,
         "cost": 17,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 6
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 12
+            },
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 6
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Dragon's Eye",
         "description": "+20 Tower",
+        "canBeDiscarded": true,
         "cost": 21,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 7
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 20
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Crystallize",
         "description": "+11 Tower\n-6 Wall",
+        "canBeDiscarded": true,
         "cost": 8,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 8
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 11
+            },
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": -6
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Bag of baubles",
         "description": "If Tower < enemy Tower, +2 Tower, else +1 Tower",
+        "canBeDiscarded": true,
         "cost": 0,
         "resourceType": 1,
         "image": {
             "column": 6,
             "row": 9
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER_IF_LESS",
+                "actor": "player",
+                "valueTrue": 2,
+                "valueFalse": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Rainbow",
         "description": "+1 Tower to all players. You gain 3 gems",
+        "canBeDiscarded": true,
         "cost": 0,
         "resourceType": 1,
         "image": {
             "column": 7,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Apprentice",
         "description": "+4 Tower, -3 recruits, 2 damage to enemy Tower",
+        "canBeDiscarded": true,
         "cost": 5,
         "resourceType": 1,
         "image": {
             "column": 7,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 4
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "player",
+                "value": -3
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -2
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Lightning Shard",
         "description": "If Tower > enemy Wall, 8 damage to enemy Tower, else 8 damage",
+        "canBeDiscarded": true,
         "cost": 11,
         "resourceType": 1,
         "image": {
             "column": 7,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "LIGHTNING_SHARD",
+                "actor": "player"
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Phase Jewel",
         "description": "+13 Tower\n+6 recruits\n+6 bricks",
+        "canBeDiscarded": true,
         "cost": 18,
         "resourceType": 1,
         "image": {
             "column": 7,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 13
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "player",
+                "value": 6
+            },
+            {
+                "type": "CHANGE_BRICKS",
+                "actor": "player",
+                "value": 6
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Mad Cow Disease",
         "description": "All players lose\n6 recruits",
+        "canBeDiscarded": true,
         "cost": 0,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "player",
+                "value": -6
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "opponent",
+                "value": -6
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Faerie",
         "description": "2 Damage\nPlay again",
+        "canBeDiscarded": true,
         "cost": 1,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 2
+            }
+        ]
     },
     {
         "name": "Moody Goblins",
         "description": "4 Damage\nYou lose 3 gems",
+        "canBeDiscarded": true,
         "cost": 1,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 4
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "player",
+                "value": -3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Minotaur",
         "description": "+1 Dungeon",
+        "canBeDiscarded": true,
         "cost": 3,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_RECRUIT_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Elven Scout",
         "description": "Draw 1 card\nDiscard 1 card\nPlay again",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 4
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "DRAW_CARD",
+                "actor": "player"
+            }
+        ]
     },
     {
         "name": "Goblin Mob",
         "description": "6 damage\nYou take 3 damage",
+        "canBeDiscarded": true,
         "cost": 3,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 5
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 6
+            },
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Goblin Archers",
         "description": "3 Damage to enemy tower\nYou take 1 damage",
+        "canBeDiscarded": true,
         "cost": 4,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 6
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -3
+            },
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Shadow Faerie",
         "description": "2 Damage to enemy tower\nPlay again",
+        "canBeDiscarded": true,
         "cost": 6,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 7
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -2
+            }
+        ]
     },
     {
         "name": "Orc",
         "description": "5 Damage",
+        "canBeDiscarded": true,
         "cost": 3,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 8
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 5
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Dwarves",
         "description": "4 Damage\n+3 Wall",
+        "canBeDiscarded": true,
         "cost": 5,
         "resourceType": 2,
         "image": {
             "column": 8,
             "row": 9
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 5
+            },
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Little Snakes",
         "description": "4 Damage to enemy tower",
+        "canBeDiscarded": true,
         "cost": 6,
         "resourceType": 2,
         "image": {
             "column": 9,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -4
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Troll Trainer",
         "description": "+2 Dungeon",
+        "canBeDiscarded": true,
         "cost": 7,
         "resourceType": 2,
         "image": {
             "column": 9,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_RECRUIT_PRODUCTION",
+                "actor": "player",
+                "value": 2
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Tower Gremlin",
         "description": "2 Damage\n+4 Wall\n+2 Tower",
+        "canBeDiscarded": true,
         "cost": 8,
         "resourceType": 2,
         "image": {
             "column": 9,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 2
+            },
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 4
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": 2
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Full Moon",
         "description": "+1 to all player's Dungeon\nYou gain 3 recruits",
+        "canBeDiscarded": true,
         "cost": 0,
         "resourceType": 2,
         "image": {
             "column": 9,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_RECRUIT_PRODUCTION",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_RECRUIT_PRODUCTION",
+                "actor": "opponent",
+                "value": 1
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "player",
+                "value": 3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Slasher",
         "description": "6 Damage",
+        "canBeDiscarded": true,
         "cost": 5,
         "resourceType": 2,
         "image": {
             "column": 9,
             "row": 4
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 6
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Ogre",
         "description": "7 Damage",
+        "canBeDiscarded": true,
         "cost": 6,
         "resourceType": 2,
         "image": {
             "column": 9,
             "row": 5
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 7
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Rabid Sheep",
         "description": "6 Damage\nEnemy loses 3 recruits",
+        "canBeDiscarded": true,
         "cost": 6,
         "resourceType": 2,
         "image": {
             "column": 9,
             "row": 6
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 6
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "opponent",
+                "value": -3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Imp",
         "description": "6 Damage. All players lose 5 bricks, gems and recruits",
+        "canBeDiscarded": true,
         "cost": 5,
         "resourceType": 2,
         "image": {
             "column": 9,
             "row": 7
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 6
+            },
+            {
+                "type": "CHANGE_BRICKS",
+                "actor": "opponent",
+                "value": -5
+            },
+            {
+                "type": "CHANGE_BRICKS",
+                "actor": "player",
+                "value": -5
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "opponent",
+                "value": -5
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "player",
+                "value": -5
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "opponent",
+                "value": -5
+            },
+            {
+                "type": "CHANGE_RECRUITS",
+                "actor": "player",
+                "value": -5
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Spizzer",
         "description": "If enemy wall = 0, 10 damage, else 6 damage",
+        "canBeDiscarded": true,
         "cost": 8,
         "resourceType": 2,
         "image": {
@@ -990,6 +2104,7 @@
     {
         "name": "Werewolf",
         "description": "9 Damage",
+        "canBeDiscarded": true,
         "cost": 9,
         "resourceType": 2,
         "image": {
@@ -1001,6 +2116,7 @@
     {
         "name": "Corrosion Cloud",
         "description": "If enemy wall > 0, 10 damage, else 7 damage",
+        "canBeDiscarded": true,
         "cost": 11,
         "resourceType": 2,
         "image": {
@@ -1012,6 +2128,7 @@
     {
         "name": "Unicorn",
         "description": "If magic > enemy magic, 12 damage, else 8 damage",
+        "canBeDiscarded": true,
         "cost": 9,
         "resourceType": 2,
         "image": {
@@ -1023,6 +2140,7 @@
     {
         "name": "Elven Archers",
         "description": "If wall > enemy wall, 6 damage to enemy tower, else 6 damage",
+        "canBeDiscarded": true,
         "cost": 10,
         "resourceType": 2,
         "image": {
@@ -1034,6 +2152,7 @@
     {
         "name": "Succubus",
         "description": "5 Damage to enemy tower, enemy loses 8 recruits",
+        "canBeDiscarded": true,
         "cost": 14,
         "resourceType": 2,
         "image": {
@@ -1045,6 +2164,7 @@
     {
         "name": "Rock Stompers",
         "description": "8 Damage\n-1 Enemy quarry",
+        "canBeDiscarded": true,
         "cost": 11,
         "resourceType": 2,
         "image": {
@@ -1056,6 +2176,7 @@
     {
         "name": "Thief",
         "description": "Enemy loses 10 gems, 5 bricks, you gain 1/2 amt. round up",
+        "canBeDiscarded": true,
         "cost": 12,
         "resourceType": 2,
         "image": {
@@ -1067,6 +2188,7 @@
     {
         "name": "Stone Giant",
         "description": "10 Damage\n+4 Wall",
+        "canBeDiscarded": true,
         "cost": 15,
         "resourceType": 2,
         "image": {
@@ -1078,6 +2200,7 @@
     {
         "name": "Vampire",
         "description": "10 Damage\nEnemy loses 5 recr., -1 enemy Dungeon",
+        "canBeDiscarded": true,
         "cost": 17,
         "resourceType": 2,
         "image": {
@@ -1089,6 +2212,7 @@
     {
         "name": "Dragon",
         "description": "20 Damage\nEnemy loses 10 gems, -1 enemy Dungeon",
+        "canBeDiscarded": true,
         "cost": 25,
         "resourceType": 2,
         "image": {
@@ -1100,6 +2224,7 @@
     {
         "name": "Spearman",
         "description": "If wall > enemy Wall, do 3 Damage, else 2 Damage",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 2,
         "image": {
@@ -1111,45 +2236,100 @@
     {
         "name": "Gnome",
         "description": "3 Damage\n+1 Gem",
+        "canBeDiscarded": true,
         "cost": 2,
         "resourceType": 2,
         "image": {
             "column": 11,
             "row": 0
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 3
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "player",
+                "value": 1
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Berserker",
         "description": "8 Damage\n3 damage to\nyour Tower",
+        "canBeDiscarded": true,
         "cost": 4,
         "resourceType": 2,
         "image": {
             "column": 11,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 8
+            },
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "player",
+                "value": -3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Warlord",
         "description": "13 Damage\nYou lose 3 gems",
+        "canBeDiscarded": true,
         "cost": 13,
         "resourceType": 2,
         "image": {
             "column": 11,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "RECEIVE_DAMAGE",
+                "actor": "opponent",
+                "value": 13
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "opponent",
+                "value": -3
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     },
     {
         "name": "Pegasus Lancer",
         "description": "12 Damage to\nenemy tower",
+        "canBeDiscarded": true,
         "cost": 18,
         "resourceType": 2,
         "image": {
             "column": 11,
             "row": 3
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_TOWER",
+                "actor": "opponent",
+                "value": -12
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
     }
 ]

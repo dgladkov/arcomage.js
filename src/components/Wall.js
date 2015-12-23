@@ -12,7 +12,7 @@ export class Wall extends Component {
   render() {
     return (
       <div style={{...styles.container, ...this.props.style}}>
-        <div style={{...styles.wall, height: this.props.height}} />
+        <div style={{...styles.wall, height: this.props.height * 1.5}} />
         <div style={styles.heightWrapper}>
           <div style={styles.height}>{this.props.height}</div>
         </div>

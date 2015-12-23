@@ -15,6 +15,7 @@ export class Card extends Component {
     }).isRequired,
     name: React.PropTypes.string.isRequired,
     onClick: React.PropTypes.func.isRequired,
+    onContextMenu: React.PropTypes.func.isRequired,
     style: React.PropTypes.object,
   };
 
@@ -25,6 +26,7 @@ export class Card extends Component {
       <div
         className="card"
         onClick={this.props.onClick}
+        onContextMenu={this.props.onContextMenu}
         style={{
           ...styles.card,
           ...cardColorStyles[this.props.color],
