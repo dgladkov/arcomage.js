@@ -18,29 +18,27 @@ export class Card extends Component {
     style: React.PropTypes.object,
   };
 
-  state = { hovered: false };
-
   render() {
     const { image } = this.props;
     const backgroundPosition = `-${ image.column * 88 }px -${ image.row * 52 }px`;
     return (
       <div
+        className="card"
         onClick={this.props.onClick}
-        onMouseOut={() => this.setState({hovered: false})}
-        onMouseOver={() => this.setState({hovered: true})}
         style={{
           ...styles.card,
           ...cardColorStyles[this.props.color],
-          ...(this.state.hovered ? styles.cardHover : null),
           ...this.props.style,
         }}
       >
         <div style={styles.cardName}>{this.props.name}</div>
         <div style={{...styles.cardImage, backgroundPosition}}/>
         <div style={styles.cardDescription}>
-          {this.props.description.split('\\n').map((item, index) => (
-            (index === 0) ? item : [<br />, item]
-          ))}
+          <span style={styles.cardDescriptionWrapper}>
+            {this.props.description.split('\n').map((item, index) => (
+              (index === 0) ? item : [<br />, item]
+            ))}
+          </span>
         </div>
         <div style={styles.cardCost}>{this.props.cost}</div>
       </div>
@@ -56,18 +54,15 @@ const disableTextSelection = {
   MozUserSelect: 'none',
   WebkitTouchCallout: 'none',
   WebkitUserSelect: 'none',
-  cursor: 'default',
 };
 
 const styles = {
   card: {
+    cursor: 'pointer',
     backgroundImage: `url("${sprites}")`,
     width: 96,
     height: 128,
     position: 'relative',
-  },
-  cardHover: {
-    marginTop: -10,
   },
   cardCost: {
     font: '12px Arial',
@@ -83,9 +78,16 @@ const styles = {
     font: '12px Arial',
     textAlign: 'center',
     position: 'absolute',
+    height: 54,
+    lineHeight: '56px',
     width: 96,
-    top: 80,
+    top: 71,
     ...disableTextSelection,
+  },
+  cardDescriptionWrapper: {
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    lineHeight: '12px',
   },
   cardImage: {
     backgroundImage: `url("${cards}")`,

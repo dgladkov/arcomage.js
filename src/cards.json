@@ -33,7 +33,18 @@
             "column": 0,
             "row": 1
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_BRICKS",
+                "actor": "player",
+                "value": 2
+            },
+            {
+                "type": "CHANGE_GEMS",
+                "actor": "player",
+                "value": 2
+            }
+        ]
     },
     {
         "name": "Friendly Terrain",
@@ -44,7 +55,13 @@
             "column": 0,
             "row": 2
         },
-        "actions": []
+        "actions": [
+            {
+                "type": "CHANGE_WALL",
+                "actor": "player",
+                "value": 1
+            }
+        ]
     },
     {
         "name": "Miners",
@@ -119,7 +136,7 @@
         "resourceType": 0,
         "image": {
             "column": 0,
-            "row": 0
+            "row": 9
         },
         "actions": "addPlayerWall:4"
     },
@@ -136,7 +153,7 @@
     },
     {
         "name": "Foundations",
-        "description": "If wall =0, +6 wall, else +3 wall",
+        "description": "If wall =0, +6\nwall, else\n+3 wall",
         "cost": 3,
         "resourceType": 0,
         "image": {
@@ -219,6 +236,919 @@
         "image": {
             "column": 1,
             "row": 8
+        },
+        "actions": []
+    },
+    {
+        "name": "Reinforced Wall",
+        "description": "+8 Wall",
+        "cost": 8,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 9
+        },
+        "actions": []
+    },
+    {
+        "name": "Portcullis",
+        "description": "+5 Wall\n+1 Dungeon",
+        "cost": 9,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Crystal Rocks",
+        "description": "+7 Wall\ngain 7 gems",
+        "cost": 9,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Harmonic Ore",
+        "description": "+6 Wall\n+3 Tower",
+        "cost": 11,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "MondoWall",
+        "description": "+12 Wall",
+        "cost": 13,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Focused Designs",
+        "description": "+8 Wall\n+5 Tower",
+        "cost": 15,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 4
+        },
+        "actions": []
+    },
+    {
+        "name": "Great Wall",
+        "description": "+15 Wall",
+        "cost": 16,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 5
+        },
+        "actions": []
+    },
+    {
+        "name": "Rock Launcher",
+        "description": "+6 Wall\n10 Damage\n to enemy",
+        "cost": 18,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 6
+        },
+        "actions": []
+    },
+    {
+        "name": "Dragon's Heart",
+        "description": "+20 Wall\n+8 Tower",
+        "cost": 24,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 7
+        },
+        "actions": []
+    },
+    {
+        "name": "Forced Labor",
+        "description": "+9 Wall\nLose 5 recruits",
+        "cost": 7,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 8
+        },
+        "actions": []
+    },
+    {
+        "name": "Rock Garden",
+        "description": "+1 Wall\n+1 Tower\n+2 recruits",
+        "cost": 1,
+        "resourceType": 0,
+        "image": {
+            "column": 2,
+            "row": 9
+        },
+        "actions": []
+    },
+    {
+        "name": "Flood Water",
+        "description": "Player(s) with lowest Wall get -1 Dungeon and 2 dam. to Tower",
+        "cost": 6,
+        "resourceType": 0,
+        "image": {
+            "column": 3,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Barracks",
+        "description": "+6 rec., +6 Wall\nif < dungeon, +1 dungeon",
+        "cost": 10,
+        "resourceType": 0,
+        "image": {
+            "column": 3,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Battlements",
+        "description": "+7 Wall\n6 damage to enemy",
+        "cost": 14,
+        "resourceType": 0,
+        "image": {
+            "column": 3,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Shift",
+        "description": "Switch your wall with enemy Wall",
+        "cost": 17,
+        "resourceType": 0,
+        "image": {
+            "column": 3,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Quartz",
+        "description": "+1 Tower\nPlay again",
+        "cost": 1,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Smoky Quartz",
+        "description": "1 Damange to enemy tower\nPlay again",
+        "cost": 2,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Amethyst",
+        "description": "+3 Tower",
+        "cost": 2,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Spell Weavers",
+        "description": "+1 Magic",
+        "cost": 3,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Prism",
+        "description": "Draw 1 card\nDiscard 1 card\nPlay again",
+        "cost": 2,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 4
+        },
+        "actions": []
+    },
+    {
+        "name": "Lodestone",
+        "description": "+3 Tower. This card can't be discarded",
+        "cost": 5,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 5
+        },
+        "actions": []
+    },
+    {
+        "name": "Solar Flare",
+        "description": "+2 Tower\n 2 Damage to enemy tower",
+        "cost": 4,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 6
+        },
+        "actions": []
+    },
+    {
+        "name": "Crystal Matrix",
+        "description": "+1 Magic\n+3 Tower\n+1 en. Tower",
+        "cost": 6,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 7
+        },
+        "actions": []
+    },
+    {
+        "name": "Gemstone Flaw",
+        "description": "3 Damage to enemy tower",
+        "cost": 2,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 8
+        },
+        "actions": []
+    },
+    {
+        "name": "Ruby",
+        "description": "+5 Tower",
+        "cost": 3,
+        "resourceType": 1,
+        "image": {
+            "column": 4,
+            "row": 9
+        },
+        "actions": []
+    },
+    {
+        "name": "Gem Spear",
+        "description": "5 Damage\nto enemy tower",
+        "cost": 4,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Power Burn",
+        "description": "5 Damage\nto your tower\n+2 Magic",
+        "cost": 3,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Harmonic Vibe",
+        "description": "+1 Magic\n+3 Tower\n+3 Wall",
+        "cost": 7,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Partiy",
+        "description": "All player's magic equals the highest magic",
+        "cost": 7,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Emerald",
+        "description": "+8 Tower",
+        "cost": 6,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 4
+        },
+        "actions": []
+    },
+    {
+        "name": "Pearl of Wisdom",
+        "description": "+5 Tower\n+1 Magic",
+        "cost": 9,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 5
+        },
+        "actions": []
+    },
+    {
+        "name": "Shatterer",
+        "description": "-1 Magic\n9 Damage to enemy tower",
+        "cost": 8,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 6
+        },
+        "actions": []
+    },
+    {
+        "name": "Crumblestone",
+        "description": "+5 Tower\nEnemy loses 6 bricks",
+        "cost": 7,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 7
+        },
+        "actions": []
+    },
+    {
+        "name": "Sapphire",
+        "description": "+11 Tower",
+        "cost": 10,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 8
+        },
+        "actions": []
+    },
+    {
+        "name": "Discord",
+        "description": "7 Damage to all towers, all player magic -1",
+        "cost": 5,
+        "resourceType": 1,
+        "image": {
+            "column": 5,
+            "row": 9
+        },
+        "actions": []
+    },
+    {
+        "name": "Fire Ruby",
+        "description": "+6 Tower\n4 Damage to enemy tower",
+        "cost": 13,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Quarry's Help",
+        "description": "+7 Tower\nLose 10\nbricks",
+        "cost": 4,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Crystal Shield",
+        "description": "+8 Tower\n+3 Wall",
+        "cost": 12,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Empathy Gem",
+        "description": "+8 Tower\n+1 Dungeon",
+        "cost": 14,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Diamond",
+        "description": "+15 Tower",
+        "cost": 16,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 4
+        },
+        "actions": []
+    },
+    {
+        "name": "Sanctuary",
+        "description": "+10 Tower\n+5 Wall\n+5 recruits",
+        "cost": 15,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 5
+        },
+        "actions": []
+    },
+    {
+        "name": "Lava Jewel",
+        "description": "+12 Tower\n6 Damage to all enemies",
+        "cost": 17,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 6
+        },
+        "actions": []
+    },
+    {
+        "name": "Dragon's Eye",
+        "description": "+20 Tower",
+        "cost": 21,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 7
+        },
+        "actions": []
+    },
+    {
+        "name": "Crystallize",
+        "description": "+11 Tower\n-6 Wall",
+        "cost": 8,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 8
+        },
+        "actions": []
+    },
+    {
+        "name": "Bag of baubles",
+        "description": "If Tower < enemy Tower, +2 Tower, else +1 Tower",
+        "cost": 0,
+        "resourceType": 1,
+        "image": {
+            "column": 6,
+            "row": 9
+        },
+        "actions": []
+    },
+    {
+        "name": "Rainbow",
+        "description": "+1 Tower to all players. You gain 3 gems",
+        "cost": 0,
+        "resourceType": 1,
+        "image": {
+            "column": 7,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Apprentice",
+        "description": "+4 Tower, -3 recruits, 2 damage to enemy Tower",
+        "cost": 5,
+        "resourceType": 1,
+        "image": {
+            "column": 7,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Lightning Shard",
+        "description": "If Tower > enemy Wall, 8 damage to enemy Tower, else 8 damage",
+        "cost": 11,
+        "resourceType": 1,
+        "image": {
+            "column": 7,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Phase Jewel",
+        "description": "+13 Tower\n+6 recruits\n+6 bricks",
+        "cost": 18,
+        "resourceType": 1,
+        "image": {
+            "column": 7,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Mad Cow Disease",
+        "description": "All players lose\n6 recruits",
+        "cost": 0,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Faerie",
+        "description": "2 Damage\nPlay again",
+        "cost": 1,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Moody Goblins",
+        "description": "4 Damage\nYou lose 3 gems",
+        "cost": 1,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Minotaur",
+        "description": "+1 Dungeon",
+        "cost": 3,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Elven Scout",
+        "description": "Draw 1 card\nDiscard 1 card\nPlay again",
+        "cost": 2,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 4
+        },
+        "actions": []
+    },
+    {
+        "name": "Goblin Mob",
+        "description": "6 damage\nYou take 3 damage",
+        "cost": 3,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 5
+        },
+        "actions": []
+    },
+    {
+        "name": "Goblin Archers",
+        "description": "3 Damage to enemy tower\nYou take 1 damage",
+        "cost": 4,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 6
+        },
+        "actions": []
+    },
+    {
+        "name": "Shadow Faerie",
+        "description": "2 Damage to enemy tower\nPlay again",
+        "cost": 6,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 7
+        },
+        "actions": []
+    },
+    {
+        "name": "Orc",
+        "description": "5 Damage",
+        "cost": 3,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 8
+        },
+        "actions": []
+    },
+    {
+        "name": "Dwarves",
+        "description": "4 Damage\n+3 Wall",
+        "cost": 5,
+        "resourceType": 2,
+        "image": {
+            "column": 8,
+            "row": 9
+        },
+        "actions": []
+    },
+    {
+        "name": "Little Snakes",
+        "description": "4 Damage to enemy tower",
+        "cost": 6,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Troll Trainer",
+        "description": "+2 Dungeon",
+        "cost": 7,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Tower Gremlin",
+        "description": "2 Damage\n+4 Wall\n+2 Tower",
+        "cost": 8,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Full Moon",
+        "description": "+1 to all player's Dungeon\nYou gain 3 recruits",
+        "cost": 0,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Slasher",
+        "description": "6 Damage",
+        "cost": 5,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 4
+        },
+        "actions": []
+    },
+    {
+        "name": "Ogre",
+        "description": "7 Damage",
+        "cost": 6,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 5
+        },
+        "actions": []
+    },
+    {
+        "name": "Rabid Sheep",
+        "description": "6 Damage\nEnemy loses 3 recruits",
+        "cost": 6,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 6
+        },
+        "actions": []
+    },
+    {
+        "name": "Imp",
+        "description": "6 Damage. All players lose 5 bricks, gems and recruits",
+        "cost": 5,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 7
+        },
+        "actions": []
+    },
+    {
+        "name": "Spizzer",
+        "description": "If enemy wall = 0, 10 damage, else 6 damage",
+        "cost": 8,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 8
+        },
+        "actions": []
+    },
+    {
+        "name": "Werewolf",
+        "description": "9 Damage",
+        "cost": 9,
+        "resourceType": 2,
+        "image": {
+            "column": 9,
+            "row": 9
+        },
+        "actions": []
+    },
+    {
+        "name": "Corrosion Cloud",
+        "description": "If enemy wall > 0, 10 damage, else 7 damage",
+        "cost": 11,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Unicorn",
+        "description": "If magic > enemy magic, 12 damage, else 8 damage",
+        "cost": 9,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Elven Archers",
+        "description": "If wall > enemy wall, 6 damage to enemy tower, else 6 damage",
+        "cost": 10,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Succubus",
+        "description": "5 Damage to enemy tower, enemy loses 8 recruits",
+        "cost": 14,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Rock Stompers",
+        "description": "8 Damage\n-1 Enemy quarry",
+        "cost": 11,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 4
+        },
+        "actions": []
+    },
+    {
+        "name": "Thief",
+        "description": "Enemy loses 10 gems, 5 bricks, you gain 1/2 amt. round up",
+        "cost": 12,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 5
+        },
+        "actions": []
+    },
+    {
+        "name": "Stone Giant",
+        "description": "10 Damage\n+4 Wall",
+        "cost": 15,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 6
+        },
+        "actions": []
+    },
+    {
+        "name": "Vampire",
+        "description": "10 Damage\nEnemy loses 5 recr., -1 enemy Dungeon",
+        "cost": 17,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 7
+        },
+        "actions": []
+    },
+    {
+        "name": "Dragon",
+        "description": "20 Damage\nEnemy loses 10 gems, -1 enemy Dungeon",
+        "cost": 25,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 8
+        },
+        "actions": []
+    },
+    {
+        "name": "Spearman",
+        "description": "If wall > enemy Wall, do 3 Damage, else 2 Damage",
+        "cost": 2,
+        "resourceType": 2,
+        "image": {
+            "column": 10,
+            "row": 9
+        },
+        "actions": []
+    },
+    {
+        "name": "Gnome",
+        "description": "3 Damage\n+1 Gem",
+        "cost": 2,
+        "resourceType": 2,
+        "image": {
+            "column": 11,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Berserker",
+        "description": "8 Damage\n3 damage to\nyour Tower",
+        "cost": 4,
+        "resourceType": 2,
+        "image": {
+            "column": 11,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Warlord",
+        "description": "13 Damage\nYou lose 3 gems",
+        "cost": 13,
+        "resourceType": 2,
+        "image": {
+            "column": 11,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Pegasus Lancer",
+        "description": "12 Damage to\nenemy tower",
+        "cost": 18,
+        "resourceType": 2,
+        "image": {
+            "column": 11,
+            "row": 3
         },
         "actions": []
     }

@@ -31,6 +31,11 @@ const initialState = {
   },
 };
 
+function changeIntValue(current, toChange) {
+  const valueToSet = current + toChange;
+  return valueToSet > 0 ? valueToSet : 0;
+}
+
 function actor(state, action) {
   switch (action.type) {
     case types.SHUFFLE_DECK:
@@ -48,7 +53,27 @@ function actor(state, action) {
     case types.CHANGE_BRICKS:
       return {
         ...state,
-        bricks: state.bricks + action.value > 0 ? state.bricks + action.value : 0,
+        bricks: changeIntValue(state.bricks, action.value),
+      };
+    case types.CHANGE_GEMS:
+      return {
+        ...state,
+        gems: changeIntValue(state.gems, action.value),
+      };
+    case types.CHANGE_RECRUITS:
+      return {
+        ...state,
+        recruits: changeIntValue(state.recruits, action.value),
+      };
+    case types.CHANGE_TOWER:
+      return {
+        ...state,
+        tower: changeIntValue(state.tower, action.value),
+      };
+    case types.CHANGE_WALL:
+      return {
+        ...state,
+        wall: changeIntValue(state.wall, action.value),
       };
     default:
       return state;

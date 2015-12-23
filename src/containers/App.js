@@ -5,12 +5,34 @@ import { connect } from 'react-redux';
 import { Tower } from '../components/Tower';
 import { Wall } from '../components/Wall';
 import { Card } from '../components/Card';
+import { CardViewer } from '../components/CardViewer';
 import { Resources } from '../components/Resources';
 import { PlayerName } from '../components/PlayerName';
 
 import background from 'file!../images/background.png';
 
+const resourceTypeToColorMap = {
+  0: 'red',
+  1: 'blue',
+  2: 'green',
+};
+
 class App extends Component {
+
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    game: React.PropTypes.object.isRequired,
+  }
+
+  constructor(props) {
+    super(props);
+    this.dispatchActions = this.dispatchActions.bind(this);
+  }
+
+  dispatchActions(actions) {
+    actions.forEach(this.props.dispatch);
+  }
+
   render() {
     const { player, opponent } = this.props.game;
     return (
@@ -58,17 +80,17 @@ class App extends Component {
           recruitProduction={opponent.recruitProduction}
           recruits={opponent.recruits}
           style={styles.rightResources}
-        />
+        /> <CardViewer dispatch={this.props.dispatch} />
         <div style={styles.hand}>
           {player.hand.map((card) => (
             <Card
-              color="red"
+              color={resourceTypeToColorMap[card.resourceType]}
               cost={card.cost}
               description={card.description}
               image={card.image}
               key={card.name}
               name={card.name}
-              onClick={() => card.actions.forEach(this.props.dispatch)}
+              onClick={() => this.dispatchActions(card.actions)}
             />
           ))}
         </div>
