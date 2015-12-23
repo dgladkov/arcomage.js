@@ -1,0 +1,225 @@
+[
+    {
+        "name": "Brick Shortage",
+        "description": "All players lose 8 bricks",
+        "cost": 0,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 0
+        },
+        "actions": [
+            {
+                "type": "CHANGE_BRICKS",
+                "actor": "opponent",
+                "value": -8
+            },
+            {
+                "type": "CHANGE_BRICKS",
+                "actor": "player",
+                "value": -8
+            },
+            {
+                "type": "END_TURN"
+            }
+        ]
+    },
+    {
+        "name": "Lucky Cache",
+        "description": "+2 Bricks\n+2 Gems\nPlay again",
+        "cost": 0,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Friendly Terrain",
+        "description": "+1 Wall\nPlay again",
+        "cost": 1,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Miners",
+        "description": "+1 Quarry",
+        "cost": 3,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Mother Lode",
+        "description": "If quarry<enemy quarry, +2 quarry. Else, +1 quarry",
+        "cost": 4,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 4
+        },
+        "actions": []
+    },
+    {
+        "name": "Dwarven Miners",
+        "description": "+4 Wall\n+1 Quarry",
+        "cost": 7,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 5
+        },
+        "actions": []
+    },
+    {
+        "name": "Work Overtime",
+        "description": "+5 Wall\nYou lose 6 gems",
+        "cost": 2,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 6
+        },
+        "actions": []
+    },
+    {
+        "name": "Copping the Tech",
+        "description": "If quarry<enemy quarry, quarry=\nenemy quarry",
+        "cost": 5,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 7
+        },
+        "actions": []
+    },
+    {
+        "name": "Basic Wall",
+        "description": "+3 Wall",
+        "cost": 2,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 8
+        },
+        "actions": "addPlayerWall:3"
+    },
+    {
+        "name": "Sturdy Wall",
+        "description": "+4 Wall",
+        "cost": 3,
+        "resourceType": 0,
+        "image": {
+            "column": 0,
+            "row": 0
+        },
+        "actions": "addPlayerWall:4"
+    },
+    {
+        "name": "Innovations",
+        "description": "+1 To all player's quarries, you gain\n4 gems",
+        "cost": 2,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 0
+        },
+        "actions": []
+    },
+    {
+        "name": "Foundations",
+        "description": "If wall =0, +6 wall, else +3 wall",
+        "cost": 3,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 1
+        },
+        "actions": []
+    },
+    {
+        "name": "Tremors",
+        "description": "All walls take 5 damage.\nPlay again",
+        "cost": 7,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 2
+        },
+        "actions": []
+    },
+    {
+        "name": "Secret Room",
+        "description": "+1 Magic\nPlay again",
+        "cost": 8,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 3
+        },
+        "actions": []
+    },
+    {
+        "name": "Earthquake",
+        "description": "-1 To all player's quarries",
+        "cost": 0,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 4
+        },
+        "actions": []
+    },
+    {
+        "name": "Big Wall",
+        "description": "+6 Wall",
+        "cost": 5,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 5
+        },
+        "actions": []
+    },
+    {
+        "name": "Collapse!",
+        "description": "-1 Enemy quarry",
+        "cost": 4,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 6
+        },
+        "actions": []
+    },
+    {
+        "name": "New Equipment",
+        "description": "+2 Quarry",
+        "cost": 6,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 7
+        },
+        "actions": []
+    },
+    {
+        "name": "Strip Mine",
+        "description": "+1 Quarry, +10\nwall. You gain 5 gems",
+        "cost": 0,
+        "resourceType": 0,
+        "image": {
+            "column": 1,
+            "row": 8
+        },
+        "actions": []
+    }
+]

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import sprites from 'file!../images/sprites.png'
+import sprites from 'file!../images/sprites.png';
 
 export class PlayerName extends Component {
 
@@ -36,5 +36,5 @@ const styles = {
     opacity: 0.8,
     lineHeight: '18px',
     verticalAlign: 'middle',
-  }
+  },
 };

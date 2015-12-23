@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
-import sprites from 'file!../images/sprites.png'
+import sprites from 'file!../images/sprites.png';
 
 export class Resources extends Component {
 
   static propTypes = {
-    bricks: React.PropTypes.number.isRequired,
     brickProduction: React.PropTypes.number.isRequired,
-    gems: React.PropTypes.number.isRequired,
+    bricks: React.PropTypes.number.isRequired,
     gemProduction: React.PropTypes.number.isRequired,
-    recruits: React.PropTypes.number.isRequired,
+    gems: React.PropTypes.number.isRequired,
     recruitProduction: React.PropTypes.number.isRequired,
+    recruits: React.PropTypes.number.isRequired,
     style: React.PropTypes.object,
   };
 
@@ -63,5 +63,5 @@ const styles = {
     width: 72,
     left: 4,
     ...disableTextSelection,
-  }
+  },
 };

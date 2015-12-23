@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import sprites from 'file!../images/sprites.png'
+import sprites from 'file!../images/sprites.png';
 
 export class Tower extends Component {
 
@@ -56,7 +56,7 @@ const styles = {
     color: '#b1b195',
     lineHeight: '18px',
     verticalAlign: 'middle',
-  }
+  },
 };
 
 const towerCapColorStyles = {
@@ -66,4 +66,4 @@ const towerCapColorStyles = {
   blue: {
     backgroundPosition: '-2px -99px',
   },
-}
+};

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import sprites from 'file!../images/sprites.png'
+import sprites from 'file!../images/sprites.png';
 
 export class Wall extends Component {
 
@@ -24,7 +24,7 @@ export class Wall extends Component {
 
 const styles = {
   container: {
-    width: 39
+    width: 39,
   },
   wall: {
     backgroundImage: `url("${sprites}")`,

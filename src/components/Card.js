@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import cards from 'file!../images/cards.png'
-import sprites from 'file!../images/sprites.png'
+import cards from 'file!../images/cards.png';
+import sprites from 'file!../images/sprites.png';
 
 export class Card extends Component {
 
@@ -14,14 +14,27 @@ export class Card extends Component {
       column: React.PropTypes.number.isRequired,
     }).isRequired,
     name: React.PropTypes.string.isRequired,
+    onClick: React.PropTypes.func.isRequired,
     style: React.PropTypes.object,
   };
+
+  state = { hovered: false };
 
   render() {
     const { image } = this.props;
     const backgroundPosition = `-${ image.column * 88 }px -${ image.row * 52 }px`;
     return (
-      <div style={{...styles.card, ...cardColorStyles[this.props.color], ...this.props.style}}>
+      <div
+        onClick={this.props.onClick}
+        onMouseOut={() => this.setState({hovered: false})}
+        onMouseOver={() => this.setState({hovered: true})}
+        style={{
+          ...styles.card,
+          ...cardColorStyles[this.props.color],
+          ...(this.state.hovered ? styles.cardHover : null),
+          ...this.props.style,
+        }}
+      >
         <div style={styles.cardName}>{this.props.name}</div>
         <div style={{...styles.cardImage, backgroundPosition}}/>
         <div style={styles.cardDescription}>
@@ -52,6 +65,9 @@ const styles = {
     width: 96,
     height: 128,
     position: 'relative',
+  },
+  cardHover: {
+    marginTop: -10,
   },
   cardCost: {
     font: '12px Arial',
@@ -100,4 +116,4 @@ const cardColorStyles = {
   blue: {
     backgroundPosition: '-102px -228px',
   },
-}
+};
